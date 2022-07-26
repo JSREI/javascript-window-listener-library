@@ -1,0 +1,26 @@
+<html>
+
+<head></head>
+
+<body>
+<script type="text/javascript" src="./javascript-window-monitor-library.js"></script>
+<script>
+
+    (async () => {
+
+        const monitor = new WindowMonitor();
+        await monitor.addWindowListener(key => {
+            console.log(new Date(), key);
+        });
+        await monitor.startWindowMonitor();
+
+    })();
+
+    setTimeout(() => {
+        xxxxxxxxxxxxxxxxxxxxxxxxx = 1000;
+    }, 1000)
+
+</script>
+</body>
+
+</html>
