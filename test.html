@@ -16,9 +16,25 @@
 
     })();
 
+    const chars = "ABCDEFGHJKMNPQRSTWXYZ"
+
+    function randomString(length) {
+        length = length || 100;
+        const charArray = [];
+        for (let i = 0; i < length; i++) {
+            charArray.push(chars.charAt(Math.floor(Math.random() * chars.length)));
+        }
+        return charArray.join("");
+    }
+
+    function genGlobalVars() {
+        window[randomString(40)] = randomString(6);
+        setTimeout(genGlobalVars, Math.random() * 10)
+    }
+
     setTimeout(() => {
-        xxxxxxxxxxxxxxxxxxxxxxxxx = 1000;
-    }, 1000)
+        genGlobalVars();
+    }, Math.random() * 10)
 
 </script>
 </body>
