@@ -8,7 +8,7 @@
 # 二、Example
 
 ```js
-   (async () => {
+(async () => {
 
     const monitor = new WindowMonitor();
     await monitor.addWindowListener(key => {
