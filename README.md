@@ -1,9 +1,8 @@
-# JavaScript库： window监听器
+# javascript逆向开发基础组件： window监听器
 
 # 一、 简介
 
 用于监听window的变化，目前只有新增全局变量监控，最初是为了用在javascript hook库中实现对window变量的proxy功能。
-
 
 # 二、Example
 
