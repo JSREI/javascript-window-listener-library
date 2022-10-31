@@ -14,9 +14,11 @@ class WindowMonitor {
 
     /**
      * 启动window监控器
+     *
+     * @param intervalMils 间隔多少毫秒检查一次，默认为300毫秒
      * @returns {Promise<void>}
      */
-    async startWindowMonitor() {
+    async startWindowMonitor(intervalMils = 300) {
 
         // 第一次的认为是原生携带的，不触发事件
         await this.screenshotWindow(true);
@@ -24,7 +26,7 @@ class WindowMonitor {
         // 之后的才触发事件
         while (true) {
             await this.screenshotWindow(false);
-            await this.sleep(300);
+            await this.sleep(intervalMils);
         }
     }
 
