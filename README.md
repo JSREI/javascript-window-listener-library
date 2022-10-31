@@ -10,9 +10,11 @@
 (async () => {
 
     const monitor = new WindowMonitor();
+    // 在window新增变量时会触发此处传入的Listener函数，Listener函数可以有多个 
     await monitor.addWindowListener(key => {
         console.log(new Date(), key);
     });
+    // 启动监控器，其实就是个while循环不断的检查window上是否有新增变量 
     await monitor.startWindowMonitor();
 
 })();
