@@ -5,16 +5,18 @@
 </head>
 
 <body>
-<script type="text/javascript" src="window-monitor-bypass/main.js"></script>
+<script type="text/javascript" src="main.js"></script>
 <script>
+
+    function eventCallback() {
+        console.log(new Date(), JSON.stringify(arguments));
+    }
 
     (async () => {
 
         const monitor = new WindowMonitor();
-        await monitor.#addWindowListener(key => {
-            console.log(new Date(), key);
-        });
-        await monitor.#startWindowMonitor();
+        await monitor.addWindowListener(eventCallback);
+        await monitor.startWindowMonitor();
 
     })();
 
@@ -30,8 +32,14 @@
     }
 
     function genGlobalVars() {
-        window[randomString(40)] = randomString(6);
-        setTimeout(genGlobalVars, Math.random() * 10)
+        const variableName = randomString(2);
+        const variableValue = randomString(10);
+        if (Math.random() < 0.3) {
+            delete window[variableName];
+        } else {
+            window[variableName] = variableValue;
+        }
+        setTimeout(genGlobalVars, Math.random() * 100)
     }
 
     setTimeout(() => {
